@@ -190,11 +190,10 @@ Le RAG retourne la réponse ainsi que les sources utilisées.
 ### 1. Cloner le projet
 
 ```bash
-git clone https://github.com/ton-compte/moteur-recherche-semantique.git
+git clone https://github.com/ferd203/moteur-recherche-semantique.git
 cd moteur-recherche-semantique
 ```
 
-Remplacer `ton-compte` par ton nom d'utilisateur GitHub.
 
 ---
 

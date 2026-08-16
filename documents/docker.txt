@@ -1,0 +1,1 @@
+Docker permet d'empaqueter une application et ses dépendances dans un conteneur isolé et reproductible.

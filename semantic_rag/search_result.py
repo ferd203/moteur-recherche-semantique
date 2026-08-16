@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 
-from chunk import Chunk
+from .chunk import Chunk
 
 
 

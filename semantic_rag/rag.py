@@ -1,6 +1,6 @@
-from ollama_llm import OllamaLLM
-from search_engine import SemanticSearchEngine
-from prompt_builder import PromptBuilder
+from .ollama_llm import OllamaLLM
+from .search_engine import SemanticSearchEngine
+from .prompt_builder import PromptBuilder
 
 class RAG:
     def __init__(

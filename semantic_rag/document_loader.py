@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from chunk import Chunk
-from sentence_chunker import SentenceChunker
+from .chunk import Chunk
+from .sentence_chunker import SentenceChunker
 
 
 class DocumentLoader:

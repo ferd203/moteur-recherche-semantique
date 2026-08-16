@@ -4,8 +4,8 @@ import faiss
 import numpy as np
 import json
 
-from chunk import Chunk
-from search_result import SearchResult
+from .chunk import Chunk
+from .search_result import SearchResult
 
 
 class VectorStore:
@@ -130,4 +130,3 @@ class VectorStore:
             )
         return store
 
-    

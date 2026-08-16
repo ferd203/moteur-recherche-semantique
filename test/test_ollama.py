@@ -1,4 +1,4 @@
-from ollama_llm import OllamaLLM
+from semantic_rag.ollama_llm import OllamaLLM
 
 
 llm = OllamaLLM(

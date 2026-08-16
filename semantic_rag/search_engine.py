@@ -1,8 +1,8 @@
 from sentence_transformers import SentenceTransformer
 
-from chunk import Chunk
-from search_result import SearchResult
-from vector_store import VectorStore
+from .chunk import Chunk
+from .search_result import SearchResult
+from .vector_store import VectorStore
 
 
 class SemanticSearchEngine:

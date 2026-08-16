@@ -71,15 +71,9 @@ Réponse + sources
 moteur-recherche-semantique/
 │
 ├── app.py
-├── chunk.py
-├── search_result.py
-├── document_loader.py
-├── sentence_chunker.py
-├── search_engine.py
-├── vector_store.py
-├── prompt_builder.py
-├── rag.py
-├── ollama_llm.py
+├── README.md
+├── requirements.txt
+├── .gitignore
 │
 ├── documents/
 │   ├── airflow.txt
@@ -91,9 +85,17 @@ moteur-recherche-semantique/
 │   ├── index.faiss
 │   └── chunks.json
 │
-├── requirements.txt
-├── .gitignore
-└── README.md
+└── semantic_rag/
+    ├── __init__.py
+    ├── chunk.py
+    ├── search_result.py
+    ├── document_loader.py
+    ├── sentence_chunker.py
+    ├── search_engine.py
+    ├── vector_store.py
+    ├── prompt_builder.py
+    ├── rag.py
+    └── ollama_llm.py
 ```
 
 Le dossier `storage/` est généré automatiquement.
@@ -133,7 +135,7 @@ Un `SearchResult` représente le résultat d'une recherche vectorielle.
 ```python
 from dataclasses import dataclass
 
-from chunk import Chunk
+from semantic_rag.chunk import Chunk
 
 
 @dataclass

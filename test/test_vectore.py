@@ -1,6 +1,6 @@
 from sentence_transformers import SentenceTransformer
 
-from vector_store import VectorStore
+from semantic_rag.vector_store import VectorStore
 
 
 model = SentenceTransformer(

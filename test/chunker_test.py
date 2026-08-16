@@ -1,5 +1,5 @@
-from sentence_chunker import SentenceChunker
-from document_loader import DocumentLoader
+from semantic_rag.sentence_chunker import SentenceChunker
+from semantic_rag.document_loader import DocumentLoader
 from pathlib import Path
 
 chunker = SentenceChunker(

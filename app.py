@@ -1,11 +1,11 @@
 from pathlib import Path
 
-from document_loader import DocumentLoader
-from sentence_chunker import SentenceChunker
-from search_engine import SemanticSearchEngine
-from prompt_builder import PromptBuilder
-from ollama_llm import OllamaLLM
-from rag import RAG
+from semantic_rag.document_loader import DocumentLoader
+from semantic_rag.sentence_chunker import SentenceChunker
+from semantic_rag.search_engine import SemanticSearchEngine
+from semantic_rag.prompt_builder import PromptBuilder
+from semantic_rag.ollama_llm import OllamaLLM
+from semantic_rag.rag import RAG
 
 
 storage_path = Path("storage")
@@ -54,7 +54,7 @@ rag = RAG(
 )
 
 response = rag.ask(
-    question="C'est quoi Airflow ?",
+    question="C'est quoi Python ?",
     top_k=3,
 )
 

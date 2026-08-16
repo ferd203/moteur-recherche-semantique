@@ -1,5 +1,5 @@
-from chunk import Chunk
-from search_result import SearchResult
+from .chunk import Chunk
+
 
 
 class PromptBuilder:

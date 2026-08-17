@@ -8,16 +8,18 @@ from semantic_rag.ollama_llm import OllamaLLM
 from semantic_rag.rag import RAG
 
 
-storage_path = Path("storage")
+DOCUMENTS_DIR = Path("documents")
+STORAGE_DIR = Path("storage")
 
-if storage_path.exists():
-    print("Chargement du VectorStore depuis storage...")
 
-    search_engine = SemanticSearchEngine.from_storage(
-        directory="storage",
-    )
+def build_search_engine() -> SemanticSearchEngine:
+    if STORAGE_DIR.exists():
+        print("Chargement du VectorStore depuis storage...")
 
-else:
+        return SemanticSearchEngine.from_storage(
+            directory=str(STORAGE_DIR),
+        )
+
     print("Construction du VectorStore depuis les documents...")
 
     chunker = SentenceChunker(
@@ -26,7 +28,7 @@ else:
     )
 
     loader = DocumentLoader(
-        directory=Path("documents"),
+        directory=DOCUMENTS_DIR,
         chunker=chunker,
     )
 
@@ -38,33 +40,44 @@ else:
         chunks=chunks,
     )
 
-    search_engine.vector_store.save("storage")
-
-
-prompt_builder = PromptBuilder()
-
-llm = OllamaLLM(
-    model_name="llama3.2",
-)
-
-rag = RAG(
-    search_engine=search_engine,
-    prompt_builder=prompt_builder,
-    llm=llm,
-)
-
-response = rag.ask(
-    question="C'est quoi Python ?",
-    top_k=3,
-)
-
-print("\nRéponse :")
-print(response["answer"])
-
-print("\nSources :")
-for result in response["results"]:
-    print(
-        f"- {result.chunk.source} "
-        f"(chunk {result.chunk.chunk_id}) "
-        f"distance={result.distance:.4f}"
+    search_engine.vector_store.save(
+        directory=str(STORAGE_DIR),
     )
+
+    return search_engine
+
+
+def main() -> None:
+    search_engine = build_search_engine()
+
+    prompt_builder = PromptBuilder()
+
+    llm = OllamaLLM(
+        model_name="llama3.2",
+    )
+
+    rag = RAG(
+        search_engine=search_engine,
+        prompt_builder=prompt_builder,
+        llm=llm,
+    )
+
+    response = rag.ask(
+        question="C'est quoi Airflow ?",
+        top_k=3,
+    )
+
+    print("\nRéponse :")
+    print(response["answer"])
+
+    print("\nSources :")
+    for result in response["results"]:
+        print(
+            f"- {result.chunk.source} "
+            f"(chunk {result.chunk.chunk_id}) "
+            f"distance={result.distance:.4f}"
+        )
+
+
+if __name__ == "__main__":
+    main()
